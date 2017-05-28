@@ -49,7 +49,7 @@ def letter(ch):
 	for el in code:
 		element(el)
 
-s = input("s = ")
+s = input("enter string: ")
 for a in s:
 	letter(a)
 
