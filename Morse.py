@@ -1,3 +1,15 @@
+import RPi.GPIO as GPIO    
+
+import time 
+
+PIN = 7
+
+GPIO.setmode(GPIO.BOARD)  
+
+
+GPIO.setup(PIN, GPIO.OUT)    
+
+
 dict = 	{
 	"a" : "-",
 	'b' : "-...", 
@@ -28,10 +40,21 @@ dict = 	{
 }
 
 def dot():
-  	print("ON . OFF")
+  	GPIO.output(PIN, 1)      
+	print ("ON")
+	time.sleep(0.2)  
+	GPIO.output(PIN, 0)
 
 def dash():
- 	print("ON ... Off")
+ 	GPIO.output(PIN, 1)
+	print("ONN")   
+ 	time.sleep(0.6) 
+ 	GPIO.output(PIN, 0) 
+
+try:
+	input = raw_input
+except NameError:
+	pass
 
 s = input("s = ")
 
@@ -41,12 +64,13 @@ for a in s:
 	# print (code)
 	
 	for el in code:
-		 print(el)
-		 if el == ".":
-		 	dot()
-		 else :
-		 	dash()
-
+		print(el)
+		if el == ".":
+			dot()
+		else :
+			dash()
+		time.sleep(0.2)  
+	time.sleep(0.2)
 
 
 
